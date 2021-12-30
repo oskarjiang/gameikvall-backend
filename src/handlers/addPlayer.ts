@@ -1,10 +1,11 @@
 import { IPlayer } from '../domain/player'
-import { PlayersStore } from '../store'
+import { Store } from '../store'
 
 export const AddPlayer = async (payload: Request) => {
   try {
     const player: IPlayer = await payload.json()
-    PlayersStore.push(player)
+    const players = new Store()
+    await players.add(player)
     return new Response(null, { status: 200 })
   } catch {
     return new Response(null, { status: 400 })
