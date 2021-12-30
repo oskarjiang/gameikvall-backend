@@ -5,8 +5,8 @@ import { Players } from './handlers/players'
 const router = Router()
 
 router
-  .get('players', Players)
-  .post('addPlayer', AddPlayer)
+  .get('/players', Players)
+  .post('/addPlayer', AddPlayer)
   .get('*', () => new Response('Not found', { status: 404 }))
 
 export async function handleRequest(request: Request): Promise<Response> {
