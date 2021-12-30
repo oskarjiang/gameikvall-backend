@@ -1,16 +1,12 @@
 import { IPlayer } from '../domain/player'
 import { PlayersStore } from '../store'
 
-export const AddPlayer = (payload: string) => {
-  console.log('*** Received payload')
-  console.log(payload)
+export const AddPlayer = async (payload: Request) => {
   try {
-    const player: IPlayer = JSON.parse(payload)
+    const player: IPlayer = await payload.json()
     PlayersStore.push(player)
     return new Response(null, { status: 200 })
-  } catch (error) {
-    console.log('*** Failed: error')
-    console.log(error)
+  } catch {
     return new Response(null, { status: 400 })
   }
 }
