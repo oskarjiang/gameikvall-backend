@@ -15,9 +15,12 @@ export const AddOrUpdate = async (player: IPlayer) => {
 
 export const GetAll = async (): Promise<IPlayer[]> => {
   const date = new Date()
-  const key = `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDay()}`
+  const key = `${date.getUTCFullYear()}-${
+    date.getUTCMonth() + 1
+  }-${date.getUTCDate()}`
   const value = await GAME_IKVALL.get(key, { type: 'json' })
-  if (typeof value === 'object') {
+  console.info(`Retrieving value for key: '${key}' and got '${value}'`)
+  if (value && typeof value === 'object') {
     return value as IPlayer[]
   } else {
     return []
