@@ -6,6 +6,10 @@ export const AddOrUpdate = async (player: IPlayer) => {
   const value = await GAME_IKVALL.get(key, { type: 'json' })
   if (value && typeof value === 'object') {
     const currentValue = value as IPlayer[]
+    if (currentValue.find((x) => x.name === player.name)) {
+      console.info(`Duplicate player with name ${player.name} was not added`)
+      return
+    }
     const newValue = [...currentValue, player]
     await GAME_IKVALL.put(key, JSON.stringify(newValue))
   } else {
