@@ -6,8 +6,8 @@ export const AddPlayer = async (payload: Request) => {
   try {
     const player: IPlayer = await payload.json()
     await AddOrUpdate(player)
-    PayloadToJsonResponse(null)
+    return PayloadToJsonResponse([])
   } catch {
-    PayloadToJsonResponse(null, 400)
+    return PayloadToJsonResponse([], 400)
   }
 }

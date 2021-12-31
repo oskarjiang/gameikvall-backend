@@ -3,7 +3,7 @@ export const PayloadToJsonResponse = (
   status: number = 200,
 ): Response => {
   console.info(`Stringifying '${payload}'`)
-  const body = payload ? JSON.stringify(payload) : ''
+  const body = JSON.stringify(payload)
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Content-type': 'application/json',
