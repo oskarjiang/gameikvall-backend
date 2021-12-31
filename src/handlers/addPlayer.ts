@@ -1,12 +1,13 @@
 import { IPlayer } from '../domain/player'
 import { AddOrUpdate } from '../store'
+import { PayloadToJsonResponse } from '../utilities'
 
 export const AddPlayer = async (payload: Request) => {
   try {
     const player: IPlayer = await payload.json()
     await AddOrUpdate(player)
-    return new Response(null, { status: 200 })
+    PayloadToJsonResponse(null)
   } catch {
-    return new Response(null, { status: 400 })
+    PayloadToJsonResponse(null, 400)
   }
 }
