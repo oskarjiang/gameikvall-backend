@@ -10,3 +10,6 @@ compatibility_date = "2021-12-30"
 command = "npm install && npm run build"
 [build.upload]
 format = "service-worker"
+[[kv_namespaces]]
+binding = "GAME_IKVALL"
+id = "c9faea9b2115468ca0f64426134e59d4"
