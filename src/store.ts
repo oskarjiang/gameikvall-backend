@@ -4,7 +4,7 @@ export const AddOrUpdate = async (player: IPlayer) => {
   const date = new Date()
   const key = `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDay()}`
   const value = await GAME_IKVALL.get(key, { type: 'json' })
-  if (typeof value === 'object') {
+  if (value && typeof value === 'object') {
     const currentValue = value as IPlayer[]
     const newValue = [...currentValue, player]
     await GAME_IKVALL.put(key, JSON.stringify(newValue))
