@@ -7,3 +7,10 @@ export const PayloadToJsonResponse = (payload: any): Response => {
   }
   return new Response(body, { headers })
 }
+
+export const GetKey = (): string => {
+  const date = new Date()
+  return `${date.getUTCFullYear()}-${
+    date.getUTCMonth() + 1
+  }-${date.getUTCDate()}`
+}
